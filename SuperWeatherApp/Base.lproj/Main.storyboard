@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New York... or any city" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lvA-cR-oNc">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="New York" borderStyle="roundedRect" placeholder="New York... or any city" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lvA-cR-oNc">
                                 <rect key="frame" x="0.0" y="99" width="375" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -34,9 +34,12 @@
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Fsq-0A-pj0">
                                 <rect key="frame" x="14" y="146" width="255" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="distanceSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="lAh-7u-JMG"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance from Current Position" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvV-qK-0GX">
-                                <rect key="frame" x="0.0" y="195" width="375" height="21"/>
+                                <rect key="frame" x="16" y="183" width="375" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -50,7 +53,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="7" currentPage="2" translatesAutoresizingMaskIntoConstraints="NO" id="CTI-30-ZTf">
-                                <rect key="frame" x="107" y="600" width="160" height="37"/>
+                                <rect key="frame" x="107" y="610" width="160" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="pageIndicatorTintColor" red="0.1046971027" green="0.83389590930000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="currentPageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -58,8 +61,29 @@
                                     <action selector="pageControl:" destination="BYZ-38-t0r" eventType="valueChanged" id="qI8-EC-nwp"/>
                                 </connections>
                             </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3d4-QI-OuZ">
+                                <rect key="frame" x="286" y="146" width="73" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="onSubmit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="12U-Zr-LV4"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Mrb-KR-nhY">
+                                <rect key="frame" x="46" y="212" width="284" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="North"/>
+                                    <segment title="East"/>
+                                    <segment title="South"/>
+                                    <segment title="West"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changingSegment:" destination="BYZ-38-t0r" eventType="valueChanged" id="vuc-cX-yyI"/>
+                                </connections>
+                            </segmentedControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="80j-9S-UZM">
-                                <rect key="frame" x="16" y="233" width="343" height="359"/>
+                                <rect key="frame" x="16" y="252" width="343" height="359"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSt-7z-eXs">
@@ -97,20 +121,15 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.78419059319888573" green="0.85299497296599935" blue="0.92336606979370117" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3d4-QI-OuZ">
-                                <rect key="frame" x="286" y="146" width="73" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Submit"/>
-                                <connections>
-                                    <action selector="onSubmit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="12U-Zr-LV4"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="dayLabel" destination="MSt-7z-eXs" id="AaJ-Sx-Tpj"/>
+                        <outlet property="directionSegment" destination="Mrb-KR-nhY" id="9A8-zt-sLQ"/>
+                        <outlet property="distanceLabel" destination="nvV-qK-0GX" id="x3b-6v-3xp"/>
+                        <outlet property="distanceSlider" destination="Fsq-0A-pj0" id="nlz-2d-ZS8"/>
                         <outlet property="feelsLikeLabel" destination="IlZ-no-lhu" id="5zl-LL-teU"/>
                         <outlet property="highLabel" destination="Gqv-21-LVZ" id="FVg-VS-UhI"/>
                         <outlet property="locationLabel" destination="cSb-UP-3I2" id="B9V-Uc-9Hm"/>

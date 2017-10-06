@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SuperWeatherApp/ViewController.swift"
-            timestampString = "528959680.437857"
+            timestampString = "528968259.581032"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "fetchRequest(city:)"
             landmarkType = "7">
          </BreakpointContent>
